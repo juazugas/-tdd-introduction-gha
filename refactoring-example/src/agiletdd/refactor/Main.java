@@ -21,7 +21,7 @@ public class Main {
         mike.setBonus(100);
         mike.setTotal(500);
 
-        MovieRentalStoreService movieRentalStoreService = new MovieRentalStoreService();
+        MovieRentalStoreService movieRentalStoreService = new MovieRentalStoreService(new MoviePrizeRepository());
         List<String> movies = asList("Titanic", "Gladiator");
 
         RentalTicket ticket = movieRentalStoreService.rentMovies(mike, movies, 10);

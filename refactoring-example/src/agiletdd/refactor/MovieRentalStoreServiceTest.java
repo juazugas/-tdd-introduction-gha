@@ -19,7 +19,7 @@ public class MovieRentalStoreServiceTest {
 
     @Before
     public void setUp() throws Exception {
-        movieRentalStoreService = new MovieRentalStoreService();
+        movieRentalStoreService = new MovieRentalStoreService(new MoviePrizeRepository());
         customer = new Customer();
 
         customer.setName("Mike");
