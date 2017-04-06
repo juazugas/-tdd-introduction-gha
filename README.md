@@ -6,6 +6,25 @@ Código relacionado con el curso de "Introducción al TDD" de [geekshubacademy.c
 
 * Xtreme Programming. XP Practices
 
+### 2017-04-06. Refactor. ###
+
+* [SOLID principle](https://en.wikipedia.org/wiki/SOLID_(object-oriented_design).
+  - [S] Single responsibility.
+  - [O] Open/Close functionality.
+  - [L] Liskov substitution principle.
+  - [I] Interface seggregation.
+  - [D] Dependency injection.
+
+* Test typus
+  Functional
+    Acceptance test
+    Integration test
+    Unit test
+
+  Non-functional
+    Load test
+    Usability test
+
 
 #### Resources
 
