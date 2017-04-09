@@ -9,27 +9,31 @@ Código relacionado con el curso de "Introducción al TDD" de [geekshubacademy.c
 ### 2017-04-06. Refactor. ###
 
 * [SOLID principle](https://en.wikipedia.org/wiki/SOLID_(object-oriented_design).
-  - [S] Single responsibility.
-  - [O] Open/Close functionality.
-  - [L] Liskov substitution principle.
-  - [I] Interface seggregation.
-  - [D] Dependency injection.
+  - [S] _Single responsibility._
+  - [O] _Open/Close functionality._
+  - [L] _Liskov substitution principle._
+  - [I] _Interface seggregation._
+  - [D] _Dependency injection._
 
 * Test typus
-  Functional
-    Acceptance test
-    Integration test
-    Unit test
+  - Functional
+    - Acceptance test
+    - Integration test
+    - Unit test
 
-  Non-functional
-    Load test
-    Usability test
+  - Non-functional
+    - Load test
+    - Usability test
 
+* References 
+
+  - [Refactoring](https://martinfowler.com/books/refactoring.html) by Fowler, M. [more ...](https://www.csie.ntu.edu.tw/~r95004/Refactoring_improving_the_design_of_existing_code.pdf)
+  - [xUnit Test Patterns](http://xunitpatterns.com) by Gerard Meszaros.
 
 #### Resources
 
 * [TDD](https://geekshubsacademy.com/lms/tdd)
-* Martin Fowler
+* [Martin Fowler](https://martinfowler.com)
 * [Kent Beck](https://es.wikipedia.org/wiki/Kent_Beck)
 * [Manifiesto Agile](http://agilemanifesto.org/)
 * [Robert C. Martin](https://en.wikipedia.org/wiki/Robert_Cecil_Martin)
