@@ -51,6 +51,9 @@ public class DefaultProductServiceTest {
        }
    }
 
+    @Test
+    public void should_list_all_products() {
 
+    }
 
 }

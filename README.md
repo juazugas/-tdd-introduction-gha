@@ -1,5 +1,7 @@
 # Introducción al TDD #
 
+Pablo Monterde <pablomonterde@gmail.com>
+
 Código relacionado con el curso de "Introducción al TDD" de [geekshubacademy.com](http://geekshubacademy.com).
 
 ### 2017-04-02. Introducción ###
