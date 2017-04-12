@@ -30,6 +30,24 @@ Código relacionado con el curso de "Introducción al TDD" de [geekshubacademy.c
   - [Refactoring](https://martinfowler.com/books/refactoring.html) by Fowler, M. [more ...](https://www.csie.ntu.edu.tw/~r95004/Refactoring_improving_the_design_of_existing_code.pdf)
   - [xUnit Test Patterns](http://xunitpatterns.com) by Gerard Meszaros.
 
+### 2017-04-10. TDD. ###
+
+* Piramide de Test
+  -Unit
+  -Integration
+  -System
+  -Acceptance
+  -Manual
+
+* SUT
+
+### 2017-04-12. Test doubles. ###
+
+* Types
+  - Dummy (e.g. null)
+  - Fake
+
+
 #### Resources
 
 * [TDD](https://geekshubsacademy.com/lms/tdd)
