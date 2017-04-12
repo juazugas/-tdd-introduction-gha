@@ -77,7 +77,7 @@ Código relacionado con el curso de "Introducción al TDD" de [geekshubacademy.c
 
 * [Domain-Driven Design Distilled](https://www.amazon.es/dp/0134434420/ref=pd_sim_14_8?_encoding=UTF8&psc=1&refRID=VGH0E516X8P0EMR9B5H9) by Vaughn Vernon
 
-* [Scrum y XP desde las trincheras](http://infoq.com/minibooks/ scrum-xp-from-the-trenches) by Herik Kniberg
+* [Scrum y XP desde las trincheras](http://infoq.com/minibooks/scrum-xp-from-the-trenches) by Herik Kniberg
 
 * Robert C. Martin [Clean Architecture and Design](https://www.youtube.com/watch?v=Nsjsiz2A9mg)
 
