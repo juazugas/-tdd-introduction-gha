@@ -46,6 +46,11 @@ Código relacionado con el curso de "Introducción al TDD" de [geekshubacademy.c
 * Types
   - Dummy (e.g. null)
   - Fake
+  - Stub (Mockito.mock)
+  - Spy  (Mockito.spy, sinon.spy)
+  - Mock (Stub + Spy. Mockito.mock + argumentCaptor)
+
+* Arquitectura hexagonal (DDD)
 
 
 #### Resources
