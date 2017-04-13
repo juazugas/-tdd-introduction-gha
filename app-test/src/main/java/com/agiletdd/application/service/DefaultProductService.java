@@ -3,6 +3,8 @@ package com.agiletdd.application.service;
 import com.agiletdd.application.domain.Product;
 import com.agiletdd.application.domain.ProductRepository;
 
+import java.util.List;
+
 /**
  * Created by imasd on 12/4/17.
  */
@@ -22,4 +24,11 @@ public class DefaultProductService implements ProductService{
         return productRepository.save(new Product(name, type.name(),price));
 
     }
+
+    @Override
+    public List<Product> findAllProducts() {
+        return productRepository.findAll();
+    }
+
+
 }

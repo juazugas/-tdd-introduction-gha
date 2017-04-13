@@ -1,28 +1,43 @@
 package com.agiletdd.application.domain;
 
+import javax.persistence.*;
 import java.time.Instant;
 import java.util.UUID;
 
 /**
  * Created by imasd on 12/4/17.
  */
+@Entity
+@Table
+@Access(AccessType.FIELD)
 public class Product {
 
     private static final int MIN_NAME_LENGTH = 4;
 
-    private final UUID id;
+    @Id
+    private UUID id;
+
+    @Column
     private String name;
+
+    @Column
     private String type;
+
+    @Column
     private double price;
+
+    @Column(name="creation_date")
     private Instant creationInstant;
+
+    public Product() { /*no-op constructor*/}
 
     public Product(String name, String type, double price){
 
         if (name.length() < MIN_NAME_LENGTH)
-            throw new InvalidUserParameterException("Name must be greater than 3");
+            throw new InvalidProductParameterException("Name must be greater than 3");
 
         if (price<=0) {
-            throw new InvalidUserParameterException("price must be greater than 0");
+            throw new InvalidProductParameterException("price must be greater than 0");
         }
 
         this.id = UUID.randomUUID();
@@ -51,5 +66,9 @@ public class Product {
 
     public Instant getCreationInstant() {
         return creationInstant;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
     }
 }

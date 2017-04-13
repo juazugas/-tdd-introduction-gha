@@ -18,7 +18,9 @@ Código relacionado con el curso de "Introducción al TDD" de [geekshubacademy.c
   - [I] _Interface seggregation._
   - [D] _Dependency injection._
 
-* Test typus
+* [Arquitectura hexagonal. Clean code](http://codely.tv/screencasts/arquitectura-hexagonal-ddd/)
+
+* Test types
   - Functional
     - Acceptance test
     - Integration test
