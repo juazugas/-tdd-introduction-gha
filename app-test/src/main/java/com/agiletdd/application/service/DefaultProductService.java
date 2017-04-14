@@ -2,12 +2,16 @@ package com.agiletdd.application.service;
 
 import com.agiletdd.application.domain.Product;
 import com.agiletdd.application.domain.ProductRepository;
+import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 /**
  * Created by imasd on 12/4/17.
  */
+@Service
+@Transactional
 public class DefaultProductService implements ProductService {
 
     ProductRepository productRepository;
