@@ -36,16 +36,11 @@ public class Product {
         if (name.length() < MIN_NAME_LENGTH)
             throw new InvalidProductParameterException("Name must be greater than 3");
 
-        if (price<=0) {
-            throw new InvalidProductParameterException("price must be greater than 0");
-        }
-
         this.id = UUID.randomUUID();
         this.name = name;
         this.type = type;
-        this.price = price;
         this.creationInstant = Instant.now();
-
+        this.setPrice(price);
     }
 
     public UUID getId() {
@@ -69,6 +64,10 @@ public class Product {
     }
 
     public void setPrice(double price) {
+        if (price<=0) {
+            throw new InvalidProductParameterException("price must be greater than 0");
+        }
+
         this.price = price;
     }
 }

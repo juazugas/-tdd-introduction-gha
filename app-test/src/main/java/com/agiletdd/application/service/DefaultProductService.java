@@ -8,7 +8,7 @@ import java.util.List;
 /**
  * Created by imasd on 12/4/17.
  */
-public class DefaultProductService implements ProductService{
+public class DefaultProductService implements ProductService {
 
     ProductRepository productRepository;
 
@@ -28,6 +28,12 @@ public class DefaultProductService implements ProductService{
     @Override
     public List<Product> findAllProducts() {
         return productRepository.findAll();
+    }
+
+    @Override
+    public Product updatePrice(Product product, double price) {
+        product.setPrice(price);
+        return productRepository.save(product);
     }
 
 

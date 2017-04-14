@@ -13,4 +13,6 @@ public interface ProductService {
     Product saveProduct(String name, ProductType type, double price);
 
     List<Product> findAllProducts();
+
+    Product updatePrice(Product product, double price);
 }
