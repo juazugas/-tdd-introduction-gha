@@ -2,8 +2,6 @@ package com.agiletdd.application.service;
 
 import com.agiletdd.application.domain.Product;
 import com.agiletdd.application.domain.ProductRepository;
-import org.hamcrest.MatcherAssert;
-import org.hamcrest.Matchers;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -11,16 +9,10 @@ import java.util.Arrays;
 import java.util.List;
 
 import static com.agiletdd.application.service.ProductType.TYPE_1;
-import static org.hamcrest.Matchers.equalTo;
-import static org.hamcrest.Matchers.hasProperty;
-import static org.hamcrest.Matchers.hasSize;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertThat;
+import static org.hamcrest.Matchers.*;
+import static org.junit.Assert.*;
 import static org.mockito.Matchers.any;
-import static org.mockito.Mockito.doAnswer;
-import static org.mockito.Mockito.doReturn;
-import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.*;
 
 /**
  * Created by imasd on 12/4/17.
@@ -85,13 +77,15 @@ public class DefaultProductServiceTest {
     public void should_update_product_price() {
         Product product = null, result = null;
         double price = 1.0, newPrice = 2.0;
-        _given: {
-           product = new Product("any-name", TYPE_1.name(), price);
-           doAnswer(invocation -> invocation.getArgumentAt(0, Product.class))
-                   .when(productRepository).save(any(Product.class));
+        _given:
+        {
+            product = new Product("any-name", TYPE_1.name(), price);
+            doAnswer(invocation -> invocation.getArgumentAt(0, Product.class))
+                    .when(productRepository).save(any(Product.class));
         }
 
-        _when: {
+        _when:
+        {
             result = productService.updatePrice(product, newPrice);
         }
 

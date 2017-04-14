@@ -3,10 +3,9 @@ package com.agiletdd.application.domain;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.hamcrest.Matchers.equalTo;
-import static org.hamcrest.Matchers.greaterThan;
-import static org.hamcrest.Matchers.hasProperty;
-import static org.junit.Assert.*;
+import static org.hamcrest.Matchers.*;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertThat;
 
 /**
  * Created by imasd on 13/4/17.
@@ -17,7 +16,7 @@ public class ProductTest {
     }
 
     @Test
-    public void should_be_created_with_valid_parameters () {
+    public void should_be_created_with_valid_parameters() {
         Product product = new Product("product", "type", 1.0);
 
         assertNotNull(product);

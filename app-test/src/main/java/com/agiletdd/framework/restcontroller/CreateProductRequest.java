@@ -9,29 +9,30 @@ public class CreateProductRequest {
     private String type;
     private double price;
 
-    public CreateProductRequest() {}
-
-    public void setName(String name) {
-        this.name = name;
+    public CreateProductRequest() {
     }
 
     public String getName() {
         return name;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getType() {
         return type;
     }
 
-    public void setPrice(double price) {
-        this.price = price;
+    public void setType(String type) {
+        this.type = type;
     }
 
     public double getPrice() {
         return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
     }
 }

@@ -26,12 +26,12 @@ public class Product {
     @Column
     private double price;
 
-    @Column(name="creation_date")
+    @Column(name = "creation_date")
     private Instant creationInstant;
 
     public Product() { /*no-op constructor*/}
 
-    public Product(String name, String type, double price){
+    public Product(String name, String type, double price) {
 
         if (name.length() < MIN_NAME_LENGTH)
             throw new InvalidProductParameterException("Name must be greater than 3");
@@ -59,15 +59,15 @@ public class Product {
         return price;
     }
 
-    public Instant getCreationInstant() {
-        return creationInstant;
-    }
-
     public void setPrice(double price) {
-        if (price<=0) {
+        if (price <= 0) {
             throw new InvalidProductParameterException("price must be greater than 0");
         }
 
         this.price = price;
+    }
+
+    public Instant getCreationInstant() {
+        return creationInstant;
     }
 }

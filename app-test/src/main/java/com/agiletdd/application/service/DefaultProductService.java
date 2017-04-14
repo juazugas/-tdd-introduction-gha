@@ -25,7 +25,7 @@ public class DefaultProductService implements ProductService {
     @Override
     public Product saveProduct(String name, ProductType type, double price) {
 
-        return productRepository.save(new Product(name, type.name(),price));
+        return productRepository.save(new Product(name, type.name(), price));
 
     }
 
