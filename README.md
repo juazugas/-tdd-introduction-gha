@@ -68,6 +68,7 @@ Código relacionado con el curso de "Introducción al TDD" de [geekshubacademy.c
 
 * Exercises
   - Real App tdd [app-test](https://github.com/pablomonterde/app-test.git)
+  - [Dijkstra's Algorithm TDD kata](http://blog.cleancoder.com/uncle-bob/2016/10/26/DijkstrasAlg.html)
 
 ### Books & References
 
@@ -79,6 +80,8 @@ Código relacionado con el curso de "Introducción al TDD" de [geekshubacademy.c
 
 * [Domain-Driven Design Distilled](https://www.amazon.es/dp/0134434420/ref=pd_sim_14_8?_encoding=UTF8&psc=1&refRID=VGH0E516X8P0EMR9B5H9) by Vaughn Vernon
 
+* [Working Effectively with Legacy Code](https://www.amazon.com/Working-Effectively-Legacy-Michael-Feathers/dp/0131177052) by Michael C. Feathers
+
 * [Scrum y XP desde las trincheras](http://infoq.com/minibooks/scrum-xp-from-the-trenches) by Herik Kniberg
 
 * Robert C. Martin [Clean Architecture and Design](https://www.youtube.com/watch?v=Nsjsiz2A9mg)
@@ -86,8 +89,9 @@ Código relacionado con el curso de "Introducción al TDD" de [geekshubacademy.c
 #### Resources
 
 * [TDD](https://geekshubsacademy.com/lms/tdd)
+* [Clean Coders Blog. Uncle Bob](http://blog.cleancoder.com/uncle-bob/)
 * [Martin Fowler](https://martinfowler.com)
 * [Kent Beck](https://es.wikipedia.org/wiki/Kent_Beck)
-* [Manifiesto Agile](http://agilemanifesto.org/)
 * [Robert C. Martin](https://en.wikipedia.org/wiki/Robert_Cecil_Martin)
+* [Manifiesto Agile](http://agilemanifesto.org/)
 
