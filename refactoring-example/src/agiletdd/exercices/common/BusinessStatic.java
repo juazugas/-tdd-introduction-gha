@@ -19,7 +19,7 @@ public class BusinessStatic {
 
     private final static Random random = new Random();
 
-    private BusinessStatic() { }
+    public BusinessStatic() { }
 
     public static String getConnectionUri() {
 
@@ -48,4 +48,5 @@ public class BusinessStatic {
                 .limit(size)
                 .mapToObj(String::valueOf).map(s -> "entity".concat(s)).collect(Collectors.toList());
     }
+
 }
