@@ -73,7 +73,7 @@ public class ClockTest {
 	@Test
 	public void should_2nd_row_4th_lamp_turn_on_after_20_hours() {
 		for (int hour = 0; hour < 24; hour++) {
-			assertLedTurnOn(hour, new Clock(0, 0, hour).getSecondRow(), 3, Led.RED, time -> time >= 15);
+			assertLedTurnOn(hour, new Clock(0, 0, hour).getSecondRow(), 3, Led.RED, time -> time >= 20);
 		}
 	}
 
