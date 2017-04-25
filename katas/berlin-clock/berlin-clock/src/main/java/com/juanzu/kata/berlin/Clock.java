@@ -1,6 +1,7 @@
 package com.juanzu.kata.berlin;
 
 import java.util.List;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -31,15 +32,13 @@ public class Clock {
 
 	public List<Led> getSecondRow() {
 		List<Led> hourRow = initHourRow();
-		IntStream.rangeClosed(1, hourRow.size())
-				.forEach(lamp -> switchLamp(hourRow, lamp, Led.RED, secondRowCondition(lamp)));
+		processRow(hourRow, Led.RED, this::secondRowCondition);
 		return hourRow;
 	}
 
 	public List<Led> getThirdRow() {
 		List<Led> hourRow = initHourRow();
-		IntStream.rangeClosed(1, hourRow.size())
-				.forEach(lamp -> switchLamp(hourRow, lamp, Led.RED, thirdRowCondition(lamp)));
+		processRow(hourRow, Led.RED, this::thirdRowCondition);
 		return hourRow;
 	}
 
@@ -53,6 +52,10 @@ public class Clock {
 
 	private List<Led> initRow(int size) {
 		return IntStream.range(0, size).mapToObj(i -> Led.OFF).collect(Collectors.toList());
+	}
+
+	private void processRow(List<Led> row, Led color, Predicate<Integer> onCondition) {
+		IntStream.rangeClosed(1, row.size()).forEach(lamp -> switchLamp(row, lamp, color, onCondition.test(lamp)));
 	}
 
 	private boolean secondRowCondition(int lamp) {

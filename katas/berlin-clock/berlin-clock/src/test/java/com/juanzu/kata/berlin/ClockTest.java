@@ -3,7 +3,6 @@ package com.juanzu.kata.berlin;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.List;
-import java.util.function.Predicate;
 
 import org.junit.Before;
 import org.junit.Test;
