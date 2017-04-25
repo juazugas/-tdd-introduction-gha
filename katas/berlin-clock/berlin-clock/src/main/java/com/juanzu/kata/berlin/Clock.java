@@ -25,8 +25,9 @@ public class Clock {
 		this.hour = hour;
 	}
 
-	public Led getFirstRow() {
-		return second % 2 == 0 ? Led.OFF : Led.YELLOW;
+	public List<Led> getFirstRow() {
+		Led color = second % 2 == 0 ? Led.OFF : Led.YELLOW;
+		return Arrays.asList(color);
 	}
 
 	public List<Led> getSecondRow() {
