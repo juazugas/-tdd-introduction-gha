@@ -2,6 +2,8 @@ package com.juanzu.kata.berlin;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 /**
  * @author jzuriaga
@@ -9,11 +11,9 @@ import java.util.List;
  */
 public class Clock {
 
-	private static final int THIRD_ROW_RANGE = 5;
-	private static final int HOUR_FIVE = 5;
-	private static final int HOUR_TEN = 10;
-	private static final int HOUR_FIFTEEN = 15;
-	private static final int HOUR_TWENTY = 20;
+	
+	private static final int DAY_HOURS = 24;
+	private static final int HOUR_ROW_DIVISOR = 5;
 
 	private int second;
 	private int minute;
@@ -26,50 +26,62 @@ public class Clock {
 	}
 
 	public List<Led> getFirstRow() {
-		Led color = second % 2 == 0 ? Led.OFF : Led.YELLOW;
-		return Arrays.asList(color);
+		List<Led> row = initFirstRow();
+		switchLamp(row, 1, Led.YELLOW, this.second % 2 != 0);
+		return row;
 	}
-
+	
 	public List<Led> getSecondRow() {
 		List<Led> hourRow = initHourRow();
-		if (hour>=HOUR_FIVE) {
-			setLamp(hourRow, 0, Led.RED);
-		} 
-		if (hour>=HOUR_TEN) {
-			setLamp(hourRow, 1, Led.RED);
-		}
-		if (hour>=HOUR_FIFTEEN) {
-			setLamp(hourRow, 2, Led.RED);
-		}
-		if (hour>=HOUR_TWENTY) {
-			setLamp(hourRow, 3, Led.RED);
-		}
+		IntStream.rangeClosed(1, hourRow.size()).forEach(lamp -> {
+			switchLamp(hourRow, lamp, Led.RED, secondRowCondition(lamp));
+		});
 		return hourRow;
+	}
+
+	private boolean secondRowCondition(int lamp) {
+		return this.hour >= (DAY_HOURS % HOUR_ROW_DIVISOR + 1) * (lamp);
 	}
 
 	public List<Led> getThirdRow() {
 		List<Led> hourRow = initHourRow();
-		if (hour%THIRD_ROW_RANGE>=1) {
-			setLamp(hourRow, 0, Led.RED);
-		}
-		if (hour%THIRD_ROW_RANGE>=2) {
+		if (hour%HOUR_ROW_DIVISOR>=1) {
 			setLamp(hourRow, 1, Led.RED);
 		}
-		if (hour%THIRD_ROW_RANGE>=3) {
+		if (hour%HOUR_ROW_DIVISOR>=2) {
 			setLamp(hourRow, 2, Led.RED);
 		}
-		if (hour%THIRD_ROW_RANGE>=4) {
+		if (hour%HOUR_ROW_DIVISOR>=3) {
 			setLamp(hourRow, 3, Led.RED);
+		}
+		if (hour%HOUR_ROW_DIVISOR>=4) {
+			setLamp(hourRow, 4, Led.RED);
 		}
 		return hourRow;
 	}
-	
+
+	private List<Led> initFirstRow () {
+		return initRow(1);
+	}
+
 	private List<Led> initHourRow() {
-		return Arrays.asList(Led.OFF, Led.OFF, Led.OFF, Led.OFF);
+		return initRow(4);
 	}
 	
-	private void setLamp(List<Led> row, int index, Led color) {
-		row.set(index, color);
+	private List<Led> initRow(int size) {
+		return IntStream.range(0, size).mapToObj(i -> Led.OFF).collect(Collectors.toList());
 	}
 	
+	private void setLamp(List<Led> row, int lamp, Led color) {
+		row.set(lamp-1, color);
+	}
+
+	private void switchLamp(List<Led> row, int lamp, Led color, boolean condition) {
+		if (condition) {
+			setLamp(row, lamp, color);
+		} else {
+			setLamp(row, lamp, Led.OFF);
+		}
+	}
+
 }

@@ -52,28 +52,28 @@ public class ClockTest {
 	@Test
 	public void should_2nd_row_first_lamp_turn_on_after_5_hours() {
 		for (int hour = 0; hour < 24; hour++) {
-			assertLedTurnOn(hour, new Clock(0, 0, hour).getSecondRow(), 0, Led.RED, time -> time >= 5);
+			assertLedTurnOn(new Clock(0, 0, hour).getSecondRow(), 0, Led.RED, hour >= 5);
 		}
 	}
 
 	@Test
 	public void should_2nd_row_2nd_lamp_turn_on_after_10_hours() {
 		for (int hour = 0; hour < 24; hour++) {
-			assertLedTurnOn(hour, new Clock(0, 0, hour).getSecondRow(), 1, Led.RED, time -> time >= 10);
+			assertLedTurnOn(new Clock(0, 0, hour).getSecondRow(), 1, Led.RED, hour >= 10);
 		}
 	}
 
 	@Test
 	public void should_2nd_row_3rd_lamp_turn_on_after_15_hours() {
 		for (int hour = 0; hour < 24; hour++) {
-			assertLedTurnOn(hour, new Clock(0, 0, hour).getSecondRow(), 2, Led.RED, time -> time >= 15);
+			assertLedTurnOn(new Clock(0, 0, hour).getSecondRow(), 2, Led.RED, hour >= 15);
 		}
 	}
 
 	@Test
 	public void should_2nd_row_4th_lamp_turn_on_after_20_hours() {
 		for (int hour = 0; hour < 24; hour++) {
-			assertLedTurnOn(hour, new Clock(0, 0, hour).getSecondRow(), 3, Led.RED, time -> time >= 20);
+			assertLedTurnOn(new Clock(0, 0, hour).getSecondRow(), 3, Led.RED, hour >= 20);
 		}
 	}
 
@@ -87,28 +87,28 @@ public class ClockTest {
 	@Test
 	public void should_3rd_row_1st_lamp_turn_on_after_1_hour() {
 		for (int hour = 0; hour < 24; hour++) {
-			assertLedTurnOn(hour, new Clock(0, 0, hour).getThirdRow(), 0, Led.RED, time -> time % 5 >= 1);
+			assertLedTurnOn(new Clock(0, 0, hour).getThirdRow(), 0, Led.RED, hour % 5 >= 1);
 		}
 	}
 
 	@Test
 	public void should_3rd_row_2nd_lamp_turn_on_after_2_hour() {
 		for (int hour = 0; hour < 24; hour++) {
-			assertLedTurnOn(hour, new Clock(0, 0, hour).getThirdRow(), 1, Led.RED, time -> time % 5 >= 2);
+			assertLedTurnOn(new Clock(0, 0, hour).getThirdRow(), 1, Led.RED, hour % 5 >= 2);
 		}
 	}
 
 	@Test
 	public void should_3rd_row_3rd_lamp_turn_on_after_3_hour() {
 		for (int hour = 0; hour < 24; hour++) {
-			assertLedTurnOn(hour, new Clock(0, 0, hour).getThirdRow(), 2, Led.RED, time -> time % 5 >= 3);
+			assertLedTurnOn(new Clock(0, 0, hour).getThirdRow(), 2, Led.RED, hour % 5 >= 3);
 		}
 	}
 
 	@Test
 	public void should_3rd_row_4th_lamp_turn_on_after_4_hour() {
 		for (int hour = 0; hour < 24; hour++) {
-			assertLedTurnOn(hour, new Clock(0, 0, hour).getThirdRow(), 3, Led.RED, time -> time % 5 >= 4);
+			assertLedTurnOn(new Clock(0, 0, hour).getThirdRow(), 3, Led.RED, hour % 5 >= 4);
 		}
 	}
 
@@ -120,8 +120,8 @@ public class ClockTest {
 		assertThat(row.get(lamp)).isEqualTo(color);
 	}
 
-	private void assertLedTurnOn(int time, List<Led> row, int lamp, Led color, Predicate<Integer> onCondition) {
-		if (onCondition.test(time)) {
+	private void assertLedTurnOn(List<Led> row, int lamp, Led color, boolean onCondition) {
+		if (onCondition) {
 			assertLedColor(row, lamp, color);
 		} else {
 			assertLedColor(row, lamp, Led.OFF);
