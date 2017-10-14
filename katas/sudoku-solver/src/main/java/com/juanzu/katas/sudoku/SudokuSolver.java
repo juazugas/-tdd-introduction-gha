@@ -1,5 +1,6 @@
 package com.juanzu.katas.sudoku;
 
+import java.util.function.BiFunction;
 import java.util.stream.IntStream;
 
 /**
@@ -20,9 +21,11 @@ public class SudokuSolver {
 	public int[][] solve() {
 		int[][] solution = Sudoku.clonePuzzle(this.puzzle);
 		while(!isSolved(this.puzzle)) {
-			for (int value = 0; value < solution.length; value++) {
-				computePossibles(solution, value+1);
-			}
+//			Ten times slower.
+			IntStream.range(0, solution.length).forEach(value -> computePossibles(solution, value + 1));
+			// for (int value = 0; value < solution.length; value++) {
+			// computePossibles(solution, value+1);
+			// }
 			resetImpossibles(solution);
 			this.puzzle = consolidate(solution); 
 			iteration++;
@@ -36,40 +39,47 @@ public class SudokuSolver {
 	}
 
 	private int[][] consolidate(int[][] solution) {
-		for (int row = 0; row < solution.length; row++) {
-			for (int col = 0; col < solution[row].length; col++) {
-				if (solution[row][col]<0) {
-					solution[row][col] = -solution[row][col];
-				}
+		puzzleStrategy(solution, (row, col) -> {
+			if (solution[row][col]<0) {
+				solution[row][col] = -solution[row][col];
 			}
-		}
+			return true;
+		});
 		return Sudoku.clonePuzzle(solution);
 	}
 
 	private void resetImpossibles(int[][] solution) {
-		for (int row = 0; row < solution.length; row++) {
-			for (int col = 0; col < solution[row].length; col++) {
-				if (solution[row][col]<-solution.length) {
-					// System.out.println("reset: "+row+","+col+" : "+solution[row][col]);
-					solution[row][col]=0;
-				}
+		puzzleStrategy(solution, (row, col) -> {
+			if (solution[row][col]<-solution.length) {
+				// System.out.println("reset: "+row+","+col+" : "+solution[row][col]);
+				solution[row][col]=0;
 			}
-		}
+			return true;
+		});
 	}
 
 	private void computePossibles(int[][] solution, int value) {
-		for (int row = 0; row < solution.length; row++) {
-			for (int col = 0; col < solution[row].length; col++) {
-				if (solution[row][col]<=0 && solution[row][col]>-(solution.length+1)) {
-					if (fitValue(this.puzzle, row, col, value)) {
-						synchronized(solution) {
-							solution[row][col]=(solution[row][col]*10)-value;
-						// System.out.println("computed: " + row+"," + col + " : " + value + " to " + solution[row][col]);
-						}
+		puzzleStrategy(solution, (row, col) -> {
+			if (solution[row][col]<=0 && solution[row][col]>-(solution.length+1)) {
+				if (fitValue(this.puzzle, row, col, value)) {
+					synchronized(solution) {
+						solution[row][col]=(solution[row][col]*10)-value;
+					// System.out.println("computed: " + row+"," + col + " : " + value + " to " + solution[row][col]);
 					}
 				}
 			}
+			return true;
+		});
+	}
+	
+	private boolean puzzleStrategy(int[][] puzzle, BiFunction<Integer, Integer, Boolean> function) {
+		boolean result = true;
+		for (int row = 0; row < puzzle.length; row++) {
+			for (int col = 0; col < puzzle[row].length; col++) {
+				result = result && function.apply(row, col);
+			}
 		}
+		return result;
 	}
 
 	private boolean fitValue(final int[][] solution, final int row, final int column, final int value) {
@@ -117,14 +127,12 @@ public class SudokuSolver {
 	}
 
 	public boolean isSolved(int[][] solution) {
-		for (int row = 0; row < solution.length; row++) {
-			for (int column = 0; column < solution[row].length; column++) {
-				if (0==solution[row][column] || !fitValue(solution, row, column, solution[row][column])) {
-					return false;
-				}
+		return puzzleStrategy(solution, (row, col) -> {
+			if (0 == solution[row][col] || !fitValue(solution, row, col, solution[row][col])) {
+				return false;
 			}
-		}
-		return true;
+			return true;
+		});
 	}
 
 }
