@@ -1,5 +1,6 @@
 package com.juanzu.katas.sudoku;
 
+import java.util.function.BiConsumer;
 import java.util.function.BiFunction;
 import java.util.stream.IntStream;
 
@@ -43,7 +44,6 @@ public class SudokuSolver {
 			if (solution[row][col]<0) {
 				solution[row][col] = -solution[row][col];
 			}
-			return true;
 		});
 		return Sudoku.clonePuzzle(solution);
 	}
@@ -54,7 +54,6 @@ public class SudokuSolver {
 				// System.out.println("reset: "+row+","+col+" : "+solution[row][col]);
 				solution[row][col]=0;
 			}
-			return true;
 		});
 	}
 
@@ -68,10 +67,16 @@ public class SudokuSolver {
 					}
 				}
 			}
-			return true;
 		});
 	}
 	
+	private void puzzleStrategy(int[][] puzzle, BiConsumer<Integer, Integer> consumer) {
+		puzzleStrategy(puzzle, (row, col) -> {
+			consumer.accept(row, col);
+			return true;
+		});
+	}
+
 	private boolean puzzleStrategy(int[][] puzzle, BiFunction<Integer, Integer, Boolean> function) {
 		boolean result = true;
 		for (int row = 0; row < puzzle.length; row++) {
